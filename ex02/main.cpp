@@ -1,5 +1,4 @@
 #include "Array.tpp"
-#include <cstdlib>
 
 int main()
 {
@@ -43,7 +42,7 @@ int main()
     std::cout << "======== Tetsing float : ========\n";
     for (unsigned int i = 0; i < array2.size(); i++)
         array2[i] = 69 + ( rand() % 1337 ) + 0.4578f;
-    
+
     for (unsigned int i = 0; i < array2.size(); i++)
         std::cout << array2[i] << std::endl;
 

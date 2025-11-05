@@ -14,7 +14,16 @@ Array<T>::Array(unsigned int n) : mData(NULL), mSize(n)
         return;
     }
     
-    this->mData = new T[mSize]();
+    try 
+    {
+        this->mData = new T[mSize];
+    }
+    catch (const std::bad_alloc& e)
+    {
+        std::cerr << "Array allocation failed: " << e.what() << std::endl;
+        mData = NULL;
+        mSize = 0;
+    }
 }
 
 template <typename T>
@@ -26,9 +35,18 @@ Array<T>::Array(const Array& other) : mData(NULL), mSize(other.mSize)
         return;
     }
 
-    mData = new T[mSize];
-    for(unsigned int i = 0; i < mSize; i++)
-        mData[i] = other.mData[i];
+    try 
+    {
+        mData = new T[mSize];
+        for (unsigned int i = 0; i < mSize; i++)
+            mData[i] = other.mData[i];
+    }
+    catch (const std::bad_alloc& e)
+    {
+        std::cerr << "Copy allocation failed: " << e.what() << std::endl;
+        mData = NULL;
+        mSize = 0;
+    }
 }
 
 template <typename T>
@@ -45,9 +63,18 @@ Array<T>& Array<T>::operator=(const Array& other)
             return;
         }
 
-        this->mData = new T[mSize];
-        for(int i = 0; i < mSize; i++)
-            this->mData[i] = other.mData[i];
+        try
+        {
+            this->mData = new T[mSize];
+            for (unsigned int i = 0; i < mSize; i++)
+                this->mData[i] = other.mData[i];
+        }
+        catch (const std::bad_alloc& e)
+        {
+            std::cerr << "Array assignment allocation failed: " << e.what() << std::endl;
+            mData = NULL;
+            mSize = 0;
+        }
     }
 
     return (*this);
