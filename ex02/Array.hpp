@@ -3,24 +3,25 @@
 
 #include <iostream>
 
-template <typename T1, typename T2>
-void    iter(const T1 array[], int len, T2 function)
+template <typename T>
+class Array
 {
-    if (len < 0 || !array)
-        return ;
+private:
+    T*   mData;
+    unsigned int mSize;
 
-    for(int i = 0; i < len; i++)
-        function(array[i]);
-}
+public:
+    Array();
+    Array(unsigned int n);
+    Array(const Array& other);
+    Array& operator=(const Array& other);
 
-template <typename T1, typename T2>
-void    iter(T1* array, int len, T2 function)
-{
-    if (len < 0 || !array)
-        return ;
+    ~Array();
 
-    for(int i = 0; i < len; i++)
-        function(array[i]);
-}
+    T& operator[](unsigned int index);
+    const T& operator[](unsigned int index) const;
+
+    unsigned int size() const;
+};
 
 #endif
