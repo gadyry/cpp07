@@ -1,9 +1,3 @@
-Alright. You want the microscope. No metaphors. No cute stories. **Real mechanics of the compiler pipeline** for templates in C++.
-
-We're going to dissect the exact moment the compiler shifts from
-“template blueprint” to **actual generated machine code**.
-
-The specific target:
 
 > Two-phase compilation: definition-time vs instantiation-time.
 
@@ -223,14 +217,4 @@ Because `unknown()` does *not* depend on T.
 
 ---
 
-## Want the reality underneath (AST + compiler logs)?
-
-If you want, next I can show:
-
-* Clang `-Xclang -ast-dump` demonstration of both phases
-* Compiler trace with `-ftime-trace`
-* Disassembly showing when instantiations trigger codegen
-* Live example with `extern template` controlling code emission
-* Example where template errors appear miles deep in instantiation stack and how to decode them
-
----
+## Search :-> Want the reality underneath (AST + compiler logs)?
