@@ -1,7 +1,17 @@
 #include <iostream>
 
 template <typename T1, typename T2>
-void    iter(T1* array, int len, T2 function)
+void    iter(const T1 array[], int len, T2 function)
+{
+    if (len < 0 || !array)
+        return ;
+
+    for(int i = 0; i < len; i++)
+        function(array[i]);
+}
+
+template <typename T1, typename T2>
+void    iter(T1 array[], int len, T2 function)
 {
     if (len < 0 || !array)
         return ;
@@ -36,7 +46,7 @@ std::ostream &operator<<(std::ostream &out, Test const &a)
 }
 
 
-void    printTest(Test& a)
+void    printTest(const Test& a)
 {
     std::cout << a << std::endl;
 }
@@ -50,9 +60,9 @@ void doubleVal(Test& t)
 int main()
 {
     int x = 59;
-    double y = 10.5;
+    double y = 10.5323782378f;
 
-    int res1 = Add<int>(x, y);
+    double res1 = Add<double>(x, y);
     std::cout << res1 << std::endl;
 
     char res2 = ::Add<char>(x, y);
@@ -68,6 +78,6 @@ int main()
 
     const Test arr2[] = {Test(4),Test(5), Test(6)};
     iter(arr2, 3, printTest);      // ok
-    iter(arr2, 3, doubleVal);  // 'X' error, cannot modify const element
+    // iter(arr2, 3, doubleVal);  // 'X' error, cannot modify const element
 
 }

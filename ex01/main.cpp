@@ -33,9 +33,14 @@ void    printChar(char c)
     std::cout << c << std::endl;
 }
 
-void    printTest(Test& a)
+void    printTest(const Test& a)
 {
     std::cout << a << std::endl;
+}
+
+void doubleVal(Test& t)
+{
+    t = Test(t.getVal() * 2);
 }
 
 int main()
@@ -56,8 +61,8 @@ int main()
     }
 
     {
-        std::cout << "\n====== Test class =========\n";
-        Test arrayTest[] =  {Test(5), Test(2), Test(8), Test(1)};
+        std::cout << "\n====== Test non-const array: =========\n";
+        Test arrayTest[] =  {Test(4), Test(3), Test(2), Test(1)};
         iter(arrayTest, 4, printTest);
     }
 
@@ -68,17 +73,10 @@ int main()
     }
 
     {
-        /*
-            "The function passed as the third parameter may take 
-            its argument by const reference
-            or non-const reference, depending on the context.
-
-            Think carefully about how to support both const and non-const
-            elements in your iter func".
-        */
-
-
-       // *** CHECK THE FILE testing.cpp To understand what Happened! *** //
+        std::cout << "\n====== Test non-const array: =========\n";
+        const Test arrayTest[] =  {Test(-4), Test(-3), Test(-2), Test(-1)};
+        iter(arrayTest, 4, printTest); // ok : work as expected
+        // iter(arrayTest, 4, doubleVal); // ERROR :Edit const value?? WTF
     }
 
     return (0);

@@ -3,13 +3,15 @@
 
 #include <iostream>
 
+template <typename T1, typename T2>
+void    iter(const T1 array[], int len, T2 function)
+{
+    if (len < 0 || !array)
+        return ;
 
-// template <typename T>
-// void iter(T* array, int len, void (*func)(T const &))
-// {
-//     for (int i = 0; i < len; i++)
-//         func(array[i]);
-// }
+    for(int i = 0; i < len; i++)
+        function(array[i]);
+}
 
 template <typename T1, typename T2>
 void    iter(T1* array, int len, T2 function)
@@ -20,6 +22,5 @@ void    iter(T1* array, int len, T2 function)
     for(int i = 0; i < len; i++)
         function(array[i]);
 }
-
 
 #endif
