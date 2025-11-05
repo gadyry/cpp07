@@ -8,7 +8,20 @@ int main()
     Array<int> array1(5);
     Array<float> array2(5);
     Array<char> array3(10);
-    // Array<int>  test(2147483669);
+    Array<int>  empty;
+    // Array<double> Over(2147483669);
+
+    std::cout << "======== Testing the empty array ========\n";
+    try
+    {
+        std::cout << "Empty array size: " << empty.size() << std::endl;
+        empty[0] = 68;
+        std::cout << empty[0] << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
 
     std::cout << "======== Tetsing int : ========\n";
     for (unsigned int i = 0; i < array1.size(); i++)
@@ -24,7 +37,7 @@ int main()
     }
     catch (const std::exception& e) 
     {
-        std::cout << "Caught exception: " << e.what() << std::endl;
+        std::cerr << "Caught exception: " << e.what() << std::endl;
     }
 
     std::cout << "======== Tetsing float : ========\n";
@@ -52,7 +65,7 @@ int main()
     }
     catch (std::exception& e)
     {
-        std::cout << "Exception caught: " << e.what() << std::endl;
+        std::cerr << "Exception caught: " << e.what() << std::endl;
     }
 
     std::cout << "\n====== End Tests: =======\n";
