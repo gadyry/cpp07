@@ -20,11 +20,7 @@ void    iter(T1 array[], int len, T2 function)
         function(array[i]);
 }
 
-template <typename T, typename T1, typename T2>
-T Add(const T1& a, const T2& b)
-{
-    return (a + b);
-}
+
 /**************************************************************************/
 
 class Test
@@ -56,6 +52,17 @@ void doubleVal(Test& t)
     t = Test(t.getVal() * 2);
 }
 
+template <typename T, typename T1, typename T2>
+T Add(const T1& a, const T2& b)
+{
+    return (a + b);
+}
+
+template < typename T3, typename T1, typename T2>
+T3 max(const T1& a, const T2& b)
+{
+    return (a > b ? a : b);
+}
 
 int main()
 {
@@ -68,6 +75,8 @@ int main()
     char res2 = ::Add<char>(x, y);
     std::cout << res2 << std::endl;
 
+    std::cout << Add<double>(res1, y) << std::endl;
+    std::cout << max<double>(res1, y) << std::endl;
 
     std::cout << "======================\n";
 
