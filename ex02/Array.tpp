@@ -1,6 +1,6 @@
 #include "Array.hpp"
 
-/*============== Implimentation: ==============*/
+/*============== Implementation: ==============*/
 
 template <typename T>
 Array<T>::Array() : mData(NULL), mSize(0) {}
