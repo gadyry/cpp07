@@ -4,7 +4,7 @@
 #include <iostream>
 
 template <typename T1, typename T2>
-void    iter(const T1 array[], int len, T2 function)
+void    iter(const T1 array[], const int len, T2 function)
 {
     if (len < 0 || !array)
         return ;
@@ -14,7 +14,7 @@ void    iter(const T1 array[], int len, T2 function)
 }
 
 template <typename T1, typename T2>
-void    iter(T1* array, int len, T2 function)
+void    iter(T1* array, const int len, T2 function)
 {
     if (len < 0 || !array)
         return ;
